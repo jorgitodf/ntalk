@@ -1,0 +1,49 @@
+<% include ../_header.ejs %>
+    <header class="container">
+        <div class="row">
+            <div class="col s6 offset-s3 center">
+                <h1>NTalk</h1>
+                <h4>Lista de Contatos</h4>
+            </div>
+        </div>
+    </header>
+    <section class="container">
+        <div class="row">
+            <div class="col s8 offset-s2">
+                <form class="col s12" action="/contato" method="post">
+                    <div class="input-field col s12">
+                        <input placeholder="Nome" id="nome" type="text" class="validate" name="contato[nome]">
+                        <label for="nome">Nome</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input placeholder="E-mail" id="email" type="email" class="validate" name="contato[email]">
+                        <label for="email">E-mail</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <button class="waves-effect waves-light btn" type="submit">Cadastrar</button>
+                    </div>
+                </form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% contatos.forEach(function(contato, index) { %>
+                            <tr>
+                                <td><%=contato.nome %></td>
+                                <td><%=contato.email %></td>
+                                <td><a href="/contato/<%=index%>" class="waves-effect waves-light btn">Detalhes</a></td>
+                                <td><a href="/chat" class="waves-effect waves-light btn ">Conversar Chat</a></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section><br>
+<% include ../_exit.ejs %>
+<% include ../_footer.ejs %>

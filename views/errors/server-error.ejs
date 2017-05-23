@@ -1,0 +1,23 @@
+<% include ../_header.ejs %>
+<header class="container">
+    <div class="row">
+        <div class="col s8 offset-s2 center">
+            <h1>NTalk</h1>
+            <h4>Erro 500: Aconteceu algo terrível...</h4>
+        </div>
+    </div>
+</header>
+<section class="container">
+    <div class="row">
+        <div class="col s6 offset-s3 center">
+            <p>
+                Veja os detalhes do erro: <br/>
+                <%=error.message%>
+            </p>
+        </div>
+        <div class="col s6 offset-s3 center">
+            <p><a href="/" class="waves-effect waves-light btn">Voltar Página Inicial</a></p>
+        </div>
+    </div>
+</section><br>
+<% include ../_footer.ejs %>

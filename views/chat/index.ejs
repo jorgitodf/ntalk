@@ -1,0 +1,31 @@
+<% include ../_header.ejs %>
+<header class="container">
+    <div class="row">
+        <div class="col s6 offset-s3 center">
+            <h1>NTalk - Chat</h1>
+        </div>
+    </div>
+</header>
+<section class="container">
+    <div class="row">
+        <div class="col s6 offset-s3">
+            <pre id="chat"></pre>
+            <input type="hidden" id="nome" value="<%=usuario.nome%>">
+            <input type="text" id="msg" placeholder="Mensagem">
+            <button onclick="enviar();" class="waves-effect waves-light btn">Enviar</button>
+        </div>
+    </div>
+</section><br>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    let socket = io('http://localhost');
+    socket.on('send-client', (msg) => {
+        document.getElementById('chat').innerHTML += msg;
+    });
+    let enviar = () => {
+        let nome = document.getElementById('nome').value;
+        let msg = document.getElementById('msg').value;
+        socket.emit('send-server', {nome: nome, msg: msg})
+    }
+</script>
+<% include ../_footer.ejs %>
